@@ -1,69 +1,41 @@
-# 🚀 JobTracker AI — Smart Job Application Tracker
+# JobTracker
 
-Track every internship and job application in one place, with an AI-powered cover letter generator built in.
+A student portfolio project for tracking job and internship applications.
+
+[Live demo](https://jobtracker-beryl-eight.vercel.app/) · [Source](https://github.com/thulanibdev/jobtracker)
 
 ## Features
 
-- **🗂️ Kanban Board** — Drag applications across Applied → Interview → Offer → Rejected
-- **✨ AI Cover Letter Generator** — Paste a job description, get a tailored cover letter powered by Claude AI
-- **📊 Analytics Dashboard** — Response rate, interview conversion, weekly activity chart
-- **🏷️ Skills Tagging** — Tag each application with required skills
-- **📝 Notes** — Recruiter info, interview notes, follow-up reminders
-- **📥 CSV Export** — Download all your applications as a spreadsheet
-- **🔍 Search** — Filter by company or role instantly
+Application board, search, statistics, CSV export and optional AI cover letters.
 
-## Getting Started
+The API validates input and returns explicit errors for missing configuration, provider failures and empty responses.
+
+## Stack and data
+
+Next.js 14, React, Tailwind CSS, browser localStorage and a server-side Anthropic API integration.
+
+Browser-stored data belongs to the current browser profile. It does not sync to a user account, and clearing site data removes it. This is a portfolio project in ongoing development.
+
+## Run locally
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/jobtracker.git
-cd jobtracker
-npm install
-```
-
-### Set up your API key (for AI cover letters)
-
-1. Get a free API key at [console.anthropic.com](https://console.anthropic.com)
-2. Copy the example env file:
-```bash
+npm ci
 cp .env.local.example .env.local
-```
-3. Add your key to `.env.local`:
-```
-ANTHROPIC_API_KEY=your_key_here
-```
-
-```bash
+# Add the required API credentials locally.
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) — comes preloaded with sample applications!
+Open http://localhost:3000. Set `ANTHROPIC_API_KEY` for cover-letter generation. The tracker works without it. API usage may incur provider charges; do not expose a paid key in client code.
 
-> **Note:** The app works fully without an API key — only the AI cover letter feature requires it.
+## Verification
 
-## Deploy to Vercel
+```bash
+npm test
+npm run build
+```
 
-1. Push to GitHub
-2. Import on [vercel.com](https://vercel.com)
-3. Add environment variable: `ANTHROPIC_API_KEY` = your key
-4. Deploy!
+The tests cover the project's persistence or business logic and error cases. They do not validate third-party services or prove that every live-demo feature works.
 
-## Tech Stack
+## Development priorities
 
-| Tool | Purpose |
-|------|---------|
-| Next.js 14 | React framework + API routes |
-| Tailwind CSS | Styling |
-| Claude AI (Haiku) | Cover letter generation |
-| localStorage | Data persistence |
-| Vercel | Deployment |
-
-## What Makes This Stand Out
-
-- **Real AI integration** via Anthropic API with a proper server-side API route
-- **Drag and drop Kanban** built from scratch using HTML5 drag events
-- **Production-quality UX** — loading skeletons, error states, keyboard shortcuts
-- **The story** — "I built this to manage my own job search" is a memorable interview answer
-
-## License
-
-MIT
+Improve accessibility, document design decisions and add integration coverage as the project develops. Keep secret keys in local environment configuration and out of Git.
